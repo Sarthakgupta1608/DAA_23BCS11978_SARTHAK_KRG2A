@@ -1,26 +1,16 @@
-// Code to find frequency of elements in a given array in O(1) time complexity.
+import java.util.HashMap;
+import java.util.Map;
 
-
-#include <iostream>
-#include <map>
-#include <iomanip>
-
-using namespace std;
-
-int main() {
-    int arr[] = {1, 3, 2, 1, 4, 3, 2, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    map<int, int> freq;
-
-    for (int i = 0; i < n; i++) {
-        freq[arr[i]]++;
+public class experiment3code{
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 1, 4, 2, 3, 5};
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+        System.out.println("Frequency of elements:");
+        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+            System.out.println(entry.getKey() + " → " + entry.getValue());
+        }
     }
-
-    cout << "Element  Frequency" << endl;
-    map<int, int>::iterator it;
-    for (it = freq.begin(); it != freq.end(); ++it) {
-        cout << setw(7) << it->first << "  " << setw(9) << it->second << endl;
-    }
-
-    return 0;
 }
